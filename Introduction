@@ -44,8 +44,25 @@ git remote add origin URL  (here either you can change the name of the "origin" 
 git push -u origin master  (in place of "origin" select the name that you selected above )
 
 OR:
-git remote rename <current-name> <new-name>
+git remote rename <current-name> <new-name>   (git remote rename origin destination)
 git remote add <new-name> url
+
+this we will use if everythign above fails:
+git remote set-url --add origin https://github.com/user/repo2.git  (this we have to use only if we see therea are errors in existing origin)
+we will have to confirm by using : git remote -v
+
+
+##if we get error like there are few updates which are behind the master branch##
+
+this means that there are updates in the branch/repo which are yet to be updated in our local repository:
+
+git pull origin master  (now pull will do fetch + merge )
+
+if the above doestn works at times:
+
+git pull --allow-unrelated-histories origin master
+git pull --rebase destination master  (this will sync all between remote & local git repository)
+
 
 
 
